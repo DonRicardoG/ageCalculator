@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import style from "./Form.module.css";
+import validate from "./validation";
 import arrow from "../../assets/icon-arrow.svg";
 
 const Form = () => {
+  const [errors, setErrors] = useState("");
   const [inputs, setInputs] = useState({
     day: "",
     month: "",
@@ -11,7 +13,25 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
+
+    if (Object.keys(errors).length === 0) {
+      if (Number(inputs.month) === 2) {
+        if (Number(inputs.day) > 28) {
+          errors.date === "Must be a valid date";
+        }
+      }
+
+      if (
+        Number(inputs.month) === 4 ||
+        Number(inputs.month) === 6 ||
+        Number(inputs.month) === 9 ||
+        Number(inputs.month) === 11
+      ) {
+        if (Number(inputs.day) > 30) {
+          errors.date === "Must be a valid date";
+        }
+      }
+    }
 
     setInputs({
       day: "",
@@ -25,6 +45,13 @@ const Form = () => {
       ...inputs,
       [e.target.name]: [e.target.value],
     });
+
+    setErrors(
+      validate({
+        ...inputs,
+        [e.target.name]: [e.target.value],
+      })
+    );
   };
 
   return (
