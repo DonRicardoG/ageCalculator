@@ -1,0 +1,72 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.formContainer hr {
+  width: 100%;
+  background-color: hsl(0, 0%, 86%);
+  border: 1px solid transparent;
+  height: 0.5px;
+}
+
+.labelsContainer {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.labelsContainer label {
+  text-transform: uppercase;
+  color: hsl(0, 1%, 44%);
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.labelsContainer input::placeholder {
+  font-size: 30px;
+  margin: 0;
+  position: relative;
+  color: hsl(0, 1%, 44%);
+  font-weight: 800;
+}
+
+.labelsContainer input {
+  font-size: 30px;
+  height: 50px;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(0, 0%, 86%);
+  color: hsl(0, 1%, 44%);
+}
+
+.labelsContainer button {
+  position: relative;
+  background-color: hsl(259, 100%, 65%);
+  border: 1px solid transparent;
+  border-radius: 8rem;
+  padding: 1.5rem;
+  bottom: -75px;
+  right: -10px;
+  transition: 0.2s background-color ease;
+  height: 6.5rem;
+  width: 6.5rem;
+}
+
+.labelsContainer button:hover {
+  background-color: hsl(0, 0%, 8%);
+  cursor: pointer;
+}
+
+.labelsContainer button img {
+  width: 30px;
+  height: 30px;
+}
+
+.formLabel {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
