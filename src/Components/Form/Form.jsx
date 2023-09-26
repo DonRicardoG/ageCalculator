@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import style from "./Form.module.css";
-import validate from "./validation";
 import arrow from "../../assets/icon-arrow.svg";
 
 const Form = () => {
   const [errorYear, setErrorYear] = useState("");
   const [errorMonth, setErrorMonth] = useState("");
   const [errorDay, setErrorDay] = useState("");
+  const [submitOff, setSubmitOff] = useState(false);
   const [inputs, setInputs] = useState({
     day: "",
     month: "",
@@ -16,34 +16,17 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (Object.keys(errors).length === 0) {
-      if (Number(inputs.month) === 2) {
-        if (Number(inputs.day) > 28) {
-          setWrongDate(true);
-          return;
-        }
-      }
-
-      if (
-        Number(inputs.month) === 4 ||
-        Number(inputs.month) === 6 ||
-        Number(inputs.month) === 9 ||
-        Number(inputs.month) === 11
-      ) {
-        if (Number(inputs.day) > 30) {
-          setWrongDate(true);
-          return;
-        }
-      }
+    if (inputs.day === "" || inputs.month === "" || inputs.year === "") {
+      return;
     }
 
-    setInputs({
-      day: "",
-      month: "",
-      year: "",
-    });
+    if (errorDay === "" || errorMonth === "" || errorYear === "") {
+      return;
+    }
 
-    setErrors({
+    console.log("desde submit");
+
+    setInputs({
       day: "",
       month: "",
       year: "",
@@ -55,13 +38,6 @@ const Form = () => {
       ...inputs,
       [e.target.name]: [e.target.value],
     });
-
-    // setErrors(
-    //   validate({
-    //     ...inputs,
-    //     [e.target.name]: [e.target.value],
-    //   })
-    // );
   };
 
   const handleBlur = (e) => {
@@ -106,8 +82,8 @@ const Form = () => {
       onSubmit={handleSubmit}
     >
       <div className={style.labelsContainer}>
-        <div className={errorDay === "" ? style.formLabel : style.labelError}>
-          <label>Day</label>
+        <div className={errorDay !== "" ? style.labelError : ""}>
+          <label className={style.labelAlone}>Day </label>
           <input
             type="number"
             placeholder="DD"
@@ -122,8 +98,8 @@ const Form = () => {
             ""
           )}
         </div>
-        <div className={errorMonth === "" ? style.formLabel : style.labelError}>
-          <label>Month</label>
+        <div className={errorMonth !== "" ? style.labelError : ""}>
+          <label className={style.labelAlone}>Month</label>
           <input
             type="number"
             placeholder="MM"
@@ -138,8 +114,8 @@ const Form = () => {
             ""
           )}
         </div>
-        <div className={errorYear === "" ? style.formLabel : style.labelError}>
-          <label>Year</label>
+        <div className={errorYear !== "" ? style.labelError : ""}>
+          <label className={style.labelAlone}>Year</label>
           <input
             type="number"
             placeholder="YYYY"
@@ -154,7 +130,7 @@ const Form = () => {
             ""
           )}
         </div>
-        <button disabled={setErrorDay === false ? false : true} type="submit">
+        <button type="submit">
           <img src={arrow} alt="arrow button" />
         </button>
       </div>
