@@ -70,3 +70,30 @@
   flex-direction: column;
   margin-bottom: 3rem;
 }
+
+.labelError {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
+
+.labelError label {
+  color: hsl(0, 100%, 67%);
+}
+
+.labelError input {
+  font-size: 30px;
+  height: 50px;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(0, 100%, 67%);
+  color: hsl(0, 1%, 44%);
+}
+
+.errorMessage {
+  color: hsl(0, 100%, 67%);
+  margin: 2px 0 0 0;
+  font-size: 10px;
+  position: relative;
+}
