@@ -2,16 +2,42 @@ import React, { useState } from "react";
 import style from "./Form.module.css";
 import arrow from "../../assets/icon-arrow.svg";
 
-const Form = () => {
+const Form = (props) => {
   const [errorYear, setErrorYear] = useState("");
   const [errorMonth, setErrorMonth] = useState("");
   const [errorDay, setErrorDay] = useState("");
-  const [submitOff, setSubmitOff] = useState(false);
+  const [errorDate, setErrorDate] = useState(false);
   const [inputs, setInputs] = useState({
     day: "",
     month: "",
     year: "",
   });
+
+  const { setDays, setMonths, setYears } = props;
+
+  function esBisiesto(año) {
+    if ((año % 4 === 0 && año % 100 !== 0) || año % 400 === 0) {
+      return true; // El año es bisiesto
+    } else {
+      return false; // El año no es bisiesto
+    }
+  }
+
+  const ageCalculator = (date) => {
+    const birthDate = new Date(date);
+    const actualDate = new Date();
+
+    const ageMiliseconds = actualDate - birthDate;
+    const age = new Date(ageMiliseconds);
+
+    const years = Math.abs(age.getUTCFullYear() - 1970);
+    const months = Math.abs(age.getUTCMonth());
+    const days = Math.abs(age.getUTCDate() - 1);
+
+    setDays(days);
+    setMonths(months);
+    setYears(years);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,11 +46,39 @@ const Form = () => {
       return;
     }
 
-    if (errorDay === "" || errorMonth === "" || errorYear === "") {
+    if (errorDay !== "" || errorMonth !== "" || errorYear !== "") {
       return;
     }
 
-    console.log("desde submit");
+    if (Number(inputs.month) === 2) {
+      if (esBisiesto(inputs.year)) {
+        if (Number(inputs.day) > 29) {
+          setErrorDate(true);
+          return;
+        }
+      } else {
+        if (Number(inputs.day) > 28) {
+          setErrorDate(true);
+          return;
+        }
+      }
+    }
+
+    if (
+      Number(inputs.month) === 4 ||
+      Number(inputs.month) === 6 ||
+      Number(inputs.month) === 9 ||
+      Number(inputs.month) === 11
+    ) {
+      if (Number(inputs.day) > 30) {
+        setErrorDate(true);
+        return;
+      }
+    }
+
+    setErrorDate(false);
+
+    ageCalculator(inputs.year + "-" + inputs.month + "-" + inputs.day);
 
     setInputs({
       day: "",
@@ -81,7 +135,13 @@ const Form = () => {
       action="submit"
       onSubmit={handleSubmit}
     >
-      <div className={style.labelsContainer}>
+      <div
+        className={
+          errorDate === true
+            ? style.labelsContainerError
+            : style.labelsContainer
+        }
+      >
         <div className={errorDay !== "" ? style.labelError : ""}>
           <label className={style.labelAlone}>Day </label>
           <input
@@ -94,6 +154,11 @@ const Form = () => {
           />
           {errorDay !== "" ? (
             <p className={style.errorMessage}>{errorDay}</p>
+          ) : (
+            ""
+          )}
+          {errorDate === true ? (
+            <p className={style.errorMessage}>Must be a valid date</p>
           ) : (
             ""
           )}
@@ -113,6 +178,7 @@ const Form = () => {
           ) : (
             ""
           )}
+          {errorDate}
         </div>
         <div className={errorYear !== "" ? style.labelError : ""}>
           <label className={style.labelAlone}>Year</label>

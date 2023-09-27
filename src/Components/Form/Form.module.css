@@ -9,16 +9,31 @@
   background-color: hsl(0, 0%, 86%);
   border: 1px solid transparent;
   height: 0.5px;
-  margin-top: 3.5rem;
+  margin-top: 5rem;
 }
 
 .labelsContainer {
   display: flex;
   justify-content: space-around;
   gap: 1rem;
+  height: 80px;
+}
+
+.labelsContainerError {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  height: 80px;
 }
 
 .labelsContainer label {
+  text-transform: uppercase;
+  color: hsl(0, 1%, 44%);
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.labelsContainerError label {
   text-transform: uppercase;
   color: hsl(0, 1%, 44%);
   font-size: 12px;
@@ -30,15 +45,21 @@
 }
 
 .labelsContainer input::placeholder {
-  font-size: 30px;
+  font-size: 22px;
   margin: 0;
-  position: relative;
+  color: hsl(0, 1%, 44%);
+  font-weight: 800;
+}
+
+.labelsContainerError input::placeholder {
+  font-size: 22px;
+  margin: 0;
   color: hsl(0, 1%, 44%);
   font-weight: 800;
 }
 
 .labelsContainer input {
-  font-size: 30px;
+  font-size: 22px;
   height: 50px;
   width: 100%;
   padding: 1.5rem;
@@ -47,19 +68,45 @@
   color: hsl(0, 1%, 44%);
 }
 
+.labelsContainerError input {
+  font-size: 22px;
+  height: 50px;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(0, 100%, 67%);
+  color: hsl(0, 1%, 44%);
+}
+
 .labelsContainer label {
   display: flex;
   flex-direction: column;
 }
 
+.labelsContainerError label {
+  display: flex;
+  flex-direction: column;
+}
+
 .labelsContainer button {
-  position: relative;
+  position: absolute;
   background-color: hsl(259, 100%, 65%);
   border: 1px solid transparent;
   border-radius: 8rem;
   padding: 1.5rem;
-  bottom: -75px;
-  right: -10px;
+  top: 280px;
+  transition: 0.2s background-color ease;
+  height: 6.5rem;
+  width: 6.5rem;
+}
+
+.labelsContainerError button {
+  position: absolute;
+  background-color: hsl(259, 100%, 65%);
+  border: 1px solid transparent;
+  border-radius: 8rem;
+  padding: 1.5rem;
+  top: 280px;
   transition: 0.2s background-color ease;
   height: 6.5rem;
   width: 6.5rem;
@@ -101,7 +148,17 @@
   cursor: pointer;
 }
 
+.labelsContainerError button:hover {
+  background-color: hsl(0, 0%, 8%);
+  cursor: pointer;
+}
+
 .labelsContainer button img {
+  width: 30px;
+  height: 30px;
+}
+
+.labelsContainerError button img {
   width: 30px;
   height: 30px;
 }
@@ -136,4 +193,207 @@
   margin: 2px 0 0 0;
   font-size: 10px;
   position: relative;
+}
+
+@media (min-width: 500px) {
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .formContainer hr {
+    width: 100%;
+    background-color: hsl(0, 0%, 86%);
+    border: 1px solid transparent;
+    height: 0.5px;
+    margin-top: 3rem;
+  }
+
+  .labelsContainer {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    height: 80px;
+  }
+
+  .labelsContainerError {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    height: 80px;
+  }
+
+  .labelsContainer label {
+    text-transform: uppercase;
+    color: hsl(0, 1%, 44%);
+    font-size: 12px;
+    font-weight: lighter;
+  }
+
+  .labelsContainerError label {
+    text-transform: uppercase;
+    color: hsl(0, 1%, 44%);
+    font-size: 12px;
+    font-weight: lighter;
+  }
+
+  .labelAlone {
+    margin-bottom: 2px !important;
+  }
+
+  .labelsContainer input::placeholder {
+    font-size: 30px;
+    margin: 0;
+    position: relative;
+    color: hsl(0, 1%, 44%);
+    font-weight: 800;
+  }
+
+  .labelsContainerError input::placeholder {
+    font-size: 30px;
+    margin: 0;
+    position: relative;
+    color: hsl(0, 1%, 44%);
+    font-weight: 800;
+  }
+
+  .labelsContainer input {
+    font-size: 30px;
+    height: 50px;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(0, 0%, 86%);
+    color: hsl(0, 1%, 44%);
+  }
+
+  .labelsContainerError input {
+    font-size: 30px;
+    height: 50px;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(0, 100%, 67%);
+    color: hsl(0, 1%, 44%);
+  }
+
+  .labelsContainer label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .labelsContainerError label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .labelsContainer button {
+    position: relative;
+    background-color: hsl(259, 100%, 65%);
+    border: 1px solid transparent;
+    border-radius: 8rem;
+    padding: 1.5rem;
+    bottom: -80px;
+    right: -10px;
+    transition: 0.2s background-color ease;
+    height: 6.5rem;
+    width: 6.5rem;
+  }
+
+  .labelsContainerError button {
+    position: relative;
+    background-color: hsl(259, 100%, 65%);
+    border: 1px solid transparent;
+    border-radius: 8rem;
+    padding: 1.5rem;
+    bottom: -80px;
+    right: -10px;
+    transition: 0.2s background-color ease;
+    height: 6.5rem;
+    width: 6.5rem;
+  }
+
+  .btnOn {
+    position: relative;
+    background-color: hsl(259, 100%, 65%);
+    border: 1px solid transparent;
+    border-radius: 8rem;
+    padding: 1.5rem;
+    bottom: -75px;
+    right: -10px;
+    transition: 0.2s background-color ease;
+    height: 6.5rem;
+    width: 6.5rem;
+  }
+
+  .btnOn:hover {
+    background-color: hsl(0, 0%, 8%);
+    cursor: pointer;
+  }
+
+  .btnOff {
+    position: relative;
+    background-color: hsl(258, 48%, 29%);
+    border: 1px solid transparent;
+    border-radius: 8rem;
+    padding: 1.5rem;
+    bottom: -75px;
+    right: -10px;
+    transition: 0.2s background-color ease;
+    height: 6.5rem;
+    width: 6.5rem;
+  }
+
+  .labelsContainer button:hover {
+    background-color: hsl(0, 0%, 8%);
+    cursor: pointer;
+  }
+
+  .labelsContainerError button:hover {
+    background-color: hsl(0, 0%, 8%);
+    cursor: pointer;
+  }
+
+  .labelsContainer button img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .labelsContainerError button img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .formLabel {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+  }
+
+  .labelError {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .labelError label {
+    color: hsl(0, 100%, 67%);
+  }
+
+  .labelError input {
+    font-size: 30px;
+    height: 50px;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(0, 100%, 67%);
+    color: hsl(0, 1%, 44%);
+  }
+
+  .errorMessage {
+    color: hsl(0, 100%, 67%);
+    margin: 2px 0 0 0;
+    font-size: 10px;
+    position: relative;
+  }
 }
