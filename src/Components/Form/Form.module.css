@@ -10,6 +10,7 @@
   border: 1px solid transparent;
   height: 0.5px;
   margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 .labelsContainer {
@@ -94,7 +95,7 @@
   border: 1px solid transparent;
   border-radius: 8rem;
   padding: 1.5rem;
-  top: 280px;
+  top: 270px;
   transition: 0.2s background-color ease;
   height: 6.5rem;
   width: 6.5rem;
@@ -106,7 +107,7 @@
   border: 1px solid transparent;
   border-radius: 8rem;
   padding: 1.5rem;
-  top: 280px;
+  top: 270px;
   transition: 0.2s background-color ease;
   height: 6.5rem;
   width: 6.5rem;
@@ -208,6 +209,7 @@
     border: 1px solid transparent;
     height: 0.5px;
     margin-top: 3rem;
+    margin-bottom: 1rem;
   }
 
   .labelsContainer {
@@ -294,21 +296,19 @@
     border: 1px solid transparent;
     border-radius: 8rem;
     padding: 1.5rem;
-    bottom: -80px;
-    right: -10px;
+    top: 80px;
     transition: 0.2s background-color ease;
     height: 6.5rem;
     width: 6.5rem;
   }
 
   .labelsContainerError button {
-    position: relative;
+    position: relative !important;
     background-color: hsl(259, 100%, 65%);
     border: 1px solid transparent;
     border-radius: 8rem;
     padding: 1.5rem;
-    bottom: -80px;
-    right: -10px;
+    top: 80px;
     transition: 0.2s background-color ease;
     height: 6.5rem;
     width: 6.5rem;
